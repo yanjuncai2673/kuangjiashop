@@ -1,4 +1,4 @@
-package com.example.shops.model.bean;
+package com.example.shops.model.bean.home;
 
 public class BrandBean {
 

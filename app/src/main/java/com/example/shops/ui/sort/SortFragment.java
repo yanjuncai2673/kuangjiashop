@@ -15,8 +15,11 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.shops.R;
 import com.example.shops.base.BaseFragment;
 import com.example.shops.interfaces.IBasePersenter;
+import com.example.shops.interfaces.sort.SortConstract;
+import com.example.shops.model.bean.sort.SortDataBean;
+import com.example.shops.model.bean.sort.SortGoodsListBean;
 
-public class SortFragment extends BaseFragment {
+public class SortFragment extends BaseFragment<SortConstract.Persenter> implements SortConstract.View {
 
     @Override
     protected int getLayout() {
@@ -34,7 +37,18 @@ public class SortFragment extends BaseFragment {
     }
 
     @Override
-    protected IBasePersenter createPersenter() {
+    protected SortConstract.Persenter createPersenter() {
         return null;
+    }
+
+
+    @Override
+    public void getSortDataReturn(SortDataBean sortDataBean) {
+
+    }
+
+    @Override
+    public void getSortGoodsListReturn(SortGoodsListBean sortGoodsListBean) {
+
     }
 }

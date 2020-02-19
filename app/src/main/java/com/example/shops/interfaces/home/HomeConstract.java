@@ -2,7 +2,7 @@ package com.example.shops.interfaces.home;
 
 import com.example.shops.interfaces.IBasePersenter;
 import com.example.shops.interfaces.IBaseView;
-import com.example.shops.model.bean.HomeIndexBean;
+import com.example.shops.model.bean.home.HomeIndexBean;
 
 //首页接口契约类
 public interface HomeConstract {

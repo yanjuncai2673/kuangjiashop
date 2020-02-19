@@ -2,8 +2,8 @@ package com.example.shops.interfaces.home;
 
 import com.example.shops.interfaces.IBasePersenter;
 import com.example.shops.interfaces.IBaseView;
-import com.example.shops.model.bean.BrandBean;
-import com.example.shops.model.bean.BrandGoodsBean;
+import com.example.shops.model.bean.home.BrandBean;
+import com.example.shops.model.bean.home.BrandGoodsBean;
 
 //首页品牌接口
 public interface BrandConstract {

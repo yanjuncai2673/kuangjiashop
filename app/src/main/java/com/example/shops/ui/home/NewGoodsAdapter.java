@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.shops.R;
 import com.example.shops.base.BaseAdapter;
-import com.example.shops.model.bean.HomeIndexBean;
+import com.example.shops.model.bean.home.HomeIndexBean;
 
 import java.util.List;
 

@@ -11,8 +11,8 @@ import com.example.shops.R;
 import com.example.shops.base.BaseAdapter;
 import com.example.shops.base.BaseFragment;
 import com.example.shops.interfaces.home.HomeConstract;
-import com.example.shops.model.bean.HomeIndexBean;
-import com.example.shops.persenter.HomePersenter;
+import com.example.shops.model.bean.home.HomeIndexBean;
+import com.example.shops.persenter.home.HomePersenter;
 import com.example.shops.ui.home.activity.BrandActivity;
 
 import java.util.ArrayList;

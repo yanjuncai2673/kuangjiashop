@@ -31,7 +31,7 @@ public abstract class BasePersenter<V extends IBaseView> implements IBasePersent
      *
      * @param disposable
      */
-    //添加观察者和被观察者的操作类
+    //添加观察者和被观察者的订阅类
     protected void addSubScribe(Disposable disposable) {
         if (compositeDisposable == null)
             compositeDisposable = new CompositeDisposable();

@@ -71,4 +71,7 @@ dependencies {
     //butterknife
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+
+    //竖导航  竖直方向的TabLayout
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 }

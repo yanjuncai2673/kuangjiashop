@@ -1,11 +1,11 @@
-package com.example.shops.persenter;
+package com.example.shops.persenter.home;
 
 import com.example.shops.base.BasePersenter;
 import com.example.shops.common.CommonSubscriber;
 import com.example.shops.interfaces.home.BrandConstract;
 import com.example.shops.model.HttpManager;
-import com.example.shops.model.bean.BrandBean;
-import com.example.shops.model.bean.BrandGoodsBean;
+import com.example.shops.model.bean.home.BrandBean;
+import com.example.shops.model.bean.home.BrandGoodsBean;
 import com.example.shops.utils.RxUtils;
 
 public class BrandPersenter extends BasePersenter<BrandConstract.View> implements BrandConstract.Persenter {

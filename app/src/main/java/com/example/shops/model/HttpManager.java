@@ -31,10 +31,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 封装http网络请求
  */
 public class HttpManager {
-    //用单例控制创建只有一个网络请求
-    private static volatile HttpManager instance;
     private ShopApi shopApi;
 
+    //用单例控制创建只有一个网络请求
+    private static volatile HttpManager instance;
     public  static HttpManager getInstance(){
         if (instance == null) {
             synchronized (HttpManager.class){
@@ -80,11 +80,10 @@ public class HttpManager {
      * 获取商城的接口
      * @return
      */
-    public ShopApi getShopApi(){
+    public ShopApi getShopApi(){//shop基类Api
         if(shopApi == null)
             shopApi = getRetrofit(Constant.BASE_SHOP_URL).create(ShopApi.class);
             return shopApi;
-
     }
 
     /**

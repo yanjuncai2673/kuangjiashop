@@ -1,6 +1,5 @@
 package com.example.shops.ui.home.activity;
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,15 +12,14 @@ import com.bumptech.glide.Glide;
 import com.example.shops.R;
 import com.example.shops.base.BaseActivity;
 import com.example.shops.interfaces.home.BrandConstract;
-import com.example.shops.model.bean.BrandBean;
-import com.example.shops.model.bean.BrandGoodsBean;
-import com.example.shops.persenter.BrandPersenter;
+import com.example.shops.model.bean.home.BrandBean;
+import com.example.shops.model.bean.home.BrandGoodsBean;
+import com.example.shops.persenter.home.BrandPersenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class BrandActivity extends BaseActivity<BrandConstract.Persenter> implements BrandConstract.View {
     @BindView(R.id.img_back)

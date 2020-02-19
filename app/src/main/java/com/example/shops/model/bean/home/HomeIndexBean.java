@@ -1,4 +1,4 @@
-package com.example.shops.model.bean;
+package com.example.shops.model.bean.home;
 
 import java.util.List;
 

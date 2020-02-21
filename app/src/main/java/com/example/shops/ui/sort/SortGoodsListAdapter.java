@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.shops.R;
 import com.example.shops.base.BaseAdapter;
+import com.example.shops.model.bean.sort.SortDataBean;
 import com.example.shops.model.bean.sort.SortGoodsListBean;
 
 import java.util.List;
@@ -24,8 +25,8 @@ public class SortGoodsListAdapter extends BaseAdapter {
     @Override
     public void bindData(BaseViewHolder holder, Object o) {
         SortGoodsListBean.DataBean.CurrentCategoryBean.SubCategoryListBean goodslist = (SortGoodsListBean.DataBean.CurrentCategoryBean.SubCategoryListBean)o;
-        ImageView iv = (ImageView) holder.getView(R.id.iv_sortgoods);
-        Glide.with(mContext).load(goodslist.getImg_url()).into(iv);
+       ImageView iv = (ImageView) holder.getView(R.id.iv_sortgood);
+        Glide.with(mContext).load(goodslist.getWap_banner_url()).into(iv);
         TextView tv = (TextView) holder.getView(R.id.tv_sortgoods);
         tv.setText(goodslist.getName());
     }

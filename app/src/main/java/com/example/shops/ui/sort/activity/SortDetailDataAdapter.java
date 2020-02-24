@@ -29,9 +29,9 @@ public class SortDetailDataAdapter extends BaseAdapter {
         TextView tv_sortName = (TextView) holder.getView(R.id.tv_sortName);
         TextView tv_sortPrice = (TextView) holder.getView(R.id.tv_sortPrice);
         tv_sortName.setText(lists.getName());
-        String price = mContext.getResources().getString(R.string.price_news_model);
-        tv_sortPrice.setText(price.replace("$",String.valueOf(lists.getRetail_price())));
-
+//        String price = mContext.getResources().getString(R.string.price_news_model);
+//        tv_sortPrice.setText(price.replace("$",String.valueOf(lists.getRetail_price())));
+        tv_sortPrice.setText("￥"+lists.getRetail_price());
 
     }
 }

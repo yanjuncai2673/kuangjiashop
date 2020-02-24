@@ -1,5 +1,6 @@
 package com.example.shops.ui.sort.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,11 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shops.R;
 import com.example.shops.base.BaseActivity;
+import com.example.shops.base.BaseAdapter;
 import com.example.shops.common.RecycleGridDivider;
 import com.example.shops.interfaces.sort.SortConstract;
 import com.example.shops.model.bean.sort.SortDetailDataBean;
 import com.example.shops.model.bean.sort.SortDetailTabBean;
 import com.example.shops.persenter.sort.SortDetailPersenter;
+import com.example.shops.ui.sort.activity.cart.GoodsSortDetailActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SortDetailActivity extends BaseActivity<SortConstract.SortDetailPersenter> implements SortConstract.SortDetailView, TabLayout.BaseOnTabSelectedListener {
+public class SortDetailActivity extends BaseActivity<SortConstract.SortDetailPersenter> implements SortConstract.SortDetailView, TabLayout.BaseOnTabSelectedListener, BaseAdapter.ItemClickHandler {
 
 
     @BindView(R.id.img_back)
@@ -72,6 +75,7 @@ public class SortDetailActivity extends BaseActivity<SortConstract.SortDetailPer
                 finish();
             }
         });
+        sortDetailDataAdapter.setOnItemClickHandler(this);
     }
 
     @Override
@@ -126,5 +130,13 @@ public class SortDetailActivity extends BaseActivity<SortConstract.SortDetailPer
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+
+    @Override
+    public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
+        int id = details.get(position).getId();
+        Intent intent = new Intent(this, GoodsSortDetailActivity.class);
+        intent.putExtra("sortDetailId",id);
+        startActivity(intent);
     }
 }

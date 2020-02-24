@@ -7,6 +7,7 @@ import com.example.shops.model.bean.sort.SortDataBean;
 import com.example.shops.model.bean.sort.SortDetailDataBean;
 import com.example.shops.model.bean.sort.SortDetailTabBean;
 import com.example.shops.model.bean.sort.SortGoodsListBean;
+import com.example.shops.model.bean.sort.cart.SortDetailItemBean;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
@@ -34,6 +35,10 @@ public interface ShopApi {
     @GET("goods/category")
     Flowable<SortDetailTabBean>getSortDetailTabDatas(@Query("id")int id);
     //获取分类详情接口
-    @GET("goods/list?categoryId=1005007&page=1&size=100")
+    @GET("goods/list")
     Flowable<SortDetailDataBean>getSortDetailDatas(@Query("categoryId")int id,@Query("page")int page,@Query("size")int size);
+
+    //获取分类详情条目内的接口   商品购买
+    @GET("goods/detail")
+    Flowable<SortDetailItemBean>getSortDetailItemData(@Query("id")int id);
 }

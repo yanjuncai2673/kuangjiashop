@@ -4,6 +4,8 @@ import com.example.shops.interfaces.IBasePersenter;
 import com.example.shops.interfaces.IBaseView;
 import com.example.shops.model.bean.home.BrandBean;
 import com.example.shops.model.bean.home.BrandGoodsBean;
+import com.example.shops.model.bean.home.HomeBrandMadeBean;
+import com.example.shops.ui.home.activity.HomeBrandMadeActivity;
 
 //首页品牌接口
 public interface BrandConstract {
@@ -20,5 +22,6 @@ public interface BrandConstract {
         void getBrandInfo(String s);
         //品牌详情列表
         void getBrandGoodsList(String brandId,int page,int size);
+
     }
 }

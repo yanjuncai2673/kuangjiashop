@@ -75,6 +75,10 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
     TextView tvLiji;
     @BindView(R.id.tv_job)
     TextView tvJob;
+    @BindView(R.id.txt_standerd)
+    TextView txtStanderd;
+    @BindView(R.id.con_standerd)
+    ConstraintLayout conStanderd;
     private ArrayList<SortDetailItemBean.DataBeanX.GalleryBean> banners;
 
     @Override
@@ -116,11 +120,16 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
         updataWebs(sortDetailItemBean.getData().getInfo());
 
         //规格数据
-        updataParam(sortDetailItemBean.getData().getAttribute() );
+        updataParam(sortDetailItemBean.getData().getAttribute());
     }
-//商品参数
+
+    //商品参数
     private void updataParam(List<SortDetailItemBean.DataBeanX.AttributeBean> attribute) {
 
+
+        if (attribute != null) {
+
+        }
     }
 
     //对WebViews进行渲染数据
@@ -154,4 +163,10 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
                 .start();
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

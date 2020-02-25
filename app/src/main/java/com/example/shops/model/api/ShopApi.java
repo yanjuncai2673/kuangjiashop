@@ -2,6 +2,7 @@ package com.example.shops.model.api;
 
 import com.example.shops.model.bean.home.BrandBean;
 import com.example.shops.model.bean.home.BrandGoodsBean;
+import com.example.shops.model.bean.home.HomeBrandMadeBean;
 import com.example.shops.model.bean.home.HomeIndexBean;
 import com.example.shops.model.bean.sort.SortDataBean;
 import com.example.shops.model.bean.sort.SortDetailDataBean;
@@ -41,4 +42,8 @@ public interface ShopApi {
     //获取分类详情条目内的接口   商品购买
     @GET("goods/detail")
     Flowable<SortDetailItemBean>getSortDetailItemData(@Query("id")int id);
+
+    //获取首页品牌制造商列表接口
+    @GET("brand/list")
+    Flowable<HomeBrandMadeBean>getHomeBrandMadeData(@Query("page")int page,@Query("size")int size);
 }

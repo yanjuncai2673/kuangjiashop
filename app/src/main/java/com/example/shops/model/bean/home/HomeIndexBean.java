@@ -4,6 +4,7 @@ import java.util.List;
 
 public class HomeIndexBean {
 
+
     /**
      * errno : 0
      * errmsg :
@@ -39,6 +40,7 @@ public class HomeIndexBean {
     }
 
     public static class DataBean {
+
         private List<BannerBean> banner;
         private List<ChannelBean> channel;
         private List<NewGoodsListBean> newGoodsList;

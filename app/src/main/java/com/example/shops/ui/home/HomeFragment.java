@@ -18,7 +18,6 @@ import com.example.shops.persenter.home.HomePersenter;
 import com.example.shops.ui.home.activity.BrandActivity;
 import com.example.shops.ui.home.activity.HomeBrandMadeActivity;
 import com.example.shops.ui.sort.activity.cart.GlidImageLoad;
-import com.google.android.material.tabs.TabLayout;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -40,8 +39,6 @@ public class HomeFragment extends BaseFragment<HomeConstract.Persenter> implemen
     RecyclerView recyclerViewNews;
     @BindView(R.id.baner_home)
     Banner banerHome;
-    @BindView(R.id.tab_home)
-    TabLayout tabHome;
     @BindView(R.id.txt_popular)
     TextView txtPopular;
     @BindView(R.id.recyclerView_populer)
@@ -51,14 +48,54 @@ public class HomeFragment extends BaseFragment<HomeConstract.Persenter> implemen
     @BindView(R.id.recyclerView_topiclist)
     RecyclerView recyclerViewTopiclist;
 
-    @BindView(R.id.txt_family)
-    TextView txtFamily;
-    @BindView(R.id.recyclerView_family)
-    RecyclerView recyclerViewFamily;
-    @BindView(R.id.txt_food)
-    TextView txtFood;
-    @BindView(R.id.recyclerView_food)
-    RecyclerView recyclerViewFood;
+    @BindView(R.id.tv_family_name)
+    TextView tvFamilyName;
+    @BindView(R.id.rv_homeca_family)
+    RecyclerView rvHomecaFamily;
+    @BindView(R.id.tv_food_name)
+    TextView tvFoodName;
+    @BindView(R.id.rv_homeca_food)
+    RecyclerView rvHomecaFood;
+    @BindView(R.id.tv_drink_name)
+    TextView tvDrinkName;
+    @BindView(R.id.rv_homeca_drink)
+    RecyclerView rvHomecaDrink;
+    @BindView(R.id.tv_peij_name)
+    TextView tvPeijName;
+    @BindView(R.id.rv_homeca_peij)
+    RecyclerView rvHomecaPeij;
+    @BindView(R.id.tv_cloth_name)
+    TextView tvClothName;
+    @BindView(R.id.rv_homeca_cloth)
+    RecyclerView rvHomecaCloth;
+    @BindView(R.id.tv_child_name)
+    TextView tvChildName;
+    @BindView(R.id.rv_homeca_child)
+    RecyclerView rvHomecaChild;
+    @BindView(R.id.tv_zawu_name)
+    TextView tvZawuName;
+    @BindView(R.id.rv_homeca_zawu)
+    RecyclerView rvHomecaZawu;
+    @BindView(R.id.tv_xihu_name)
+    TextView tvXihuName;
+    @BindView(R.id.rv_homeca_xihu)
+    RecyclerView rvHomecaXihu;
+    @BindView(R.id.tv_like_name)
+    TextView tvLikeName;
+    @BindView(R.id.rv_homeca_like)
+    RecyclerView rvHomecaLike;
+
+
+    @BindView(R.id.tv_tab_family)
+    TextView tvTabFamily;
+    @BindView(R.id.tv_tab_food)
+    TextView tvTabFood;
+    @BindView(R.id.tv_tab_parts)
+    TextView tvTabParts;
+    @BindView(R.id.tv_tab_clothing)
+    TextView tvTabClothing;
+    @BindView(R.id.tv_tab_likes)
+    TextView tvTabLikes;
 
 
     BrandAdapter brandAdapter;
@@ -73,12 +110,9 @@ public class HomeFragment extends BaseFragment<HomeConstract.Persenter> implemen
     TopicListAdapter topicListAdapter;
     List<HomeIndexBean.DataBean.TopicListBean> topicListBeanList;
 
-   /* FamilyAdapter familyAdapter;
-    List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> familylist;
-
-    FoodAdapter foodAdapter;
-    List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> topicListBeanList;*/
-
+    HomeCategoryAdapter homeCategoryAdapter;
+    //    List<HomeIndexBean.DataBean.CategoryListBean>goodsList;
+    List<HomeIndexBean.DataBean.CategoryListBean> goodsList;
 
 
     @Override
@@ -93,7 +127,7 @@ public class HomeFragment extends BaseFragment<HomeConstract.Persenter> implemen
 
     @Override
     protected void initView() {
-//品牌制造商直供
+        //品牌制造商直供
         list = new ArrayList<>();
         brandAdapter = new BrandAdapter(list, context);
         recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
@@ -127,6 +161,28 @@ public class HomeFragment extends BaseFragment<HomeConstract.Persenter> implemen
         recyclerViewTopiclist.setAdapter(topicListAdapter);
 
 
+        //首页居家 餐厨 等
+        rvHomecaFamily.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvHomecaChild.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvHomecaCloth.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvHomecaDrink.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvHomecaFood.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvHomecaLike.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvHomecaPeij.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvHomecaXihu.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvHomecaZawu.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+
+        goodsList = new ArrayList<>();
+        homeCategoryAdapter = new HomeCategoryAdapter(goodsList, getActivity());
+        rvHomecaFamily.setAdapter(homeCategoryAdapter);
+        rvHomecaFood.setAdapter(homeCategoryAdapter);
+        rvHomecaDrink.setAdapter(homeCategoryAdapter);
+        rvHomecaPeij.setAdapter(homeCategoryAdapter);
+        rvHomecaCloth.setAdapter(homeCategoryAdapter);
+        rvHomecaChild.setAdapter(homeCategoryAdapter);
+        rvHomecaLike.setAdapter(homeCategoryAdapter);
+        rvHomecaZawu.setAdapter(homeCategoryAdapter);
+        rvHomecaXihu.setAdapter(homeCategoryAdapter);
     }
 
     @Override
@@ -142,8 +198,7 @@ public class HomeFragment extends BaseFragment<HomeConstract.Persenter> implemen
         newgoodsAdapter.updata(indexbean.getData().getNewGoodsList());
 //刷新banner数据
         updatahomebanners(indexbean.getData().getBanner());
-        //刷新TabLayout数据
-        updatahomeTabs(indexbean.getData().getChannel());
+
 
         //刷新人气推荐数据
         hotGoodsAdapter.updata(indexbean.getData().getHotGoodsList());
@@ -151,15 +206,23 @@ public class HomeFragment extends BaseFragment<HomeConstract.Persenter> implemen
         //专题精选
         topicListAdapter.updata(indexbean.getData().getTopicList());
 
+
+        List<HomeIndexBean.DataBean.CategoryListBean> categoryList = indexbean.getData().getCategoryList();
+
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList = categoryList.get(0).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList1 = categoryList.get(1).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList2 = categoryList.get(2).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList3 = categoryList.get(3).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList4 = categoryList.get(4).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList5 = categoryList.get(5).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList6 = categoryList.get(6).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList7 = categoryList.get(7).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList8 = categoryList.get(8).getGoodsList();
+            List<HomeIndexBean.DataBean.CategoryListBean.GoodsListBean> goodsList9 = categoryList.get(9).getGoodsList();
+            homeCategoryAdapter.updata(goodsList);
+
     }
 
-
-    private void updatahomeTabs(List<HomeIndexBean.DataBean.ChannelBean> channel) {
-        for (int i = 0; i < channel.size(); i++) {
-            String name = channel.get(i).getName();
-        }
-
-    }
 
     private void updatahomebanners(List<HomeIndexBean.DataBean.BannerBean> banner) {
         List<String> imgs = new ArrayList<>();

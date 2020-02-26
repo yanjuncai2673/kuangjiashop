@@ -20,4 +20,9 @@
     right:0;
     margin:auto;
     }</string>
+    <string name="tv_home">居家</string>
+    <string name="tv_food">餐厨</string>
+    <string name="tv_parts">配件</string>
+    <string name="tv_clothing">服装</string>
+    <string name="tv_likes">志趣</string>
 </resources>

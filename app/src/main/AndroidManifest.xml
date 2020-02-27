@@ -18,6 +18,7 @@
         <activity android:name=".ui.sort.activity.cart.GoodsSortDetailActivity"></activity>
         <activity android:name=".ui.sort.activity.SortDetailActivity" />
         <activity android:name=".ui.home.activity.HomeBrandMadeActivity"/>
+        <activity android:name=".ui.home.activity.HomeNewgoodsDetailActivity"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

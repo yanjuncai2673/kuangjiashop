@@ -5,6 +5,7 @@ import com.example.shops.model.bean.home.BrandGoodsBean;
 import com.example.shops.model.bean.home.HomeBrandMadeBean;
 import com.example.shops.model.bean.home.HomeIndexBean;
 import com.example.shops.model.bean.home.HomeNewGoodsDetailBean;
+import com.example.shops.model.bean.login.UserLoginBean;
 import com.example.shops.model.bean.sort.SortDataBean;
 import com.example.shops.model.bean.sort.SortDetailDataBean;
 import com.example.shops.model.bean.sort.SortDetailTabBean;
@@ -12,7 +13,9 @@ import com.example.shops.model.bean.sort.SortGoodsListBean;
 import com.example.shops.model.bean.sort.cart.SortDetailItemBean;
 
 import io.reactivex.Flowable;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 //Api接口类
 public interface ShopApi {
@@ -51,4 +54,8 @@ public interface ShopApi {
     //获取首页新品 居家 餐厨等详情接口
     @GET("goods/related")
     Flowable<HomeNewGoodsDetailBean>getHomeNewgoodsDetailData(@Query("id")int id);
+
+    //登录接口
+    @POST("auth/login")
+    Flowable<UserLoginBean>getLogin(@Field("nickname")String nickname,@Field("password")String password);
 }

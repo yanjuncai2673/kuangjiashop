@@ -1,11 +1,19 @@
 package com.example.shops.ui.sort.activity.cart;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,10 +63,10 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
     TextView txtCaizhi;
     @BindView(R.id.con_caizhi)
     ConstraintLayout conCaizhi;
-    @BindView(R.id.txt_adds)
+    /*@BindView(R.id.txt_adds)
     TextView txtAdds;
     @BindView(R.id.con_adds)
-    ConstraintLayout conAdds;
+    ConstraintLayout conAdds;*/
     @BindView(R.id.web_sortitem)
     WebView webSortitem;
     @BindView(R.id.con_quest)
@@ -79,7 +87,28 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
     TextView txtStanderd;
     @BindView(R.id.con_standerd)
     ConstraintLayout conStanderd;
+    @BindView(R.id.tv_caizhi)
+    TextView tvCaizhi;
+    @BindView(R.id.tv_size)
+    TextView tvSize;
+    @BindView(R.id.tv_color)
+    TextView tvColor;
+    @BindView(R.id.tv_standerd)
+    TextView tvStanderd;
+
+    @BindView(R.id.con_parent)
+    ConstraintLayout conParent;
+    /*@BindView(R.id.tv_remark)
+    TextView tvRemark;
+    @BindView(R.id.txt_remark)
+    TextView txtRemark;
+    @BindView(R.id.con_remark)
+    ConstraintLayout conRemark;
+    @BindView(R.id.tv_adds)
+    TextView tvAdds;*/
     private ArrayList<SortDetailItemBean.DataBeanX.GalleryBean> banners;
+    private PopupWindow popupWindow;
+    int amount = 0;
 
     @Override
     protected void initData() {
@@ -97,8 +126,83 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
     protected void initView() {
         WebSettings webSettings = webSortitem.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        ivSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPop_num();
+            }
+        });
+        tvJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GoodsSortDetailActivity.this, "请添加数量", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+    }
 
+    private void showPop_num() {
+        View view = LayoutInflater.from(this).inflate(R.layout.pop_selectnum, null);
+        popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable());
+        backgroungAlpha(0.5f);
+        popupWindow.setOutsideTouchable(true);
+        if (!popupWindow.isShowing()) {
+            popupWindow.showAtLocation(conParent, Gravity.BOTTOM, 0, -120);
+        }
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                amount =0;
+                backgroungAlpha(1.0f);
+            }
+        });
+        TextView name = view.findViewById(R.id.tv_popname);
+        TextView price = view.findViewById(R.id.tv_popprice);
+        TextView num = view.findViewById(R.id.tv_num);
+        TextView subtract = view.findViewById(R.id.tv_subtract);
+        TextView add = view.findViewById(R.id.tv_add);
+        ImageView iv = view.findViewById(R.id.iv_pop_close);
+        TextView job = view.findViewById(R.id.tv_job);
+        name.setText(txtTitle.getText().toString());
+        price.setText(txtPri.getText().toString());
+        job.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Integer.parseInt(num.getText().toString())>0) {
+                    Toast.makeText(GoodsSortDetailActivity.this, "添加购物车成功", Toast.LENGTH_SHORT).show();
+                    popupWindow.dismiss();
+                }else {
+                    Toast.makeText(GoodsSortDetailActivity.this, "请添加数量", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                num.setText((++amount)+"");
+            }
+        });
+        subtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (amount >1) {
+                    num.setText((--amount)+"");
+                }
+            }
+        });
+    }
+
+    private void backgroungAlpha(float v) {
+        WindowManager.LayoutParams attributes = getWindow().getAttributes();
+        attributes.alpha = v;
+        getWindow().setAttributes(attributes);
     }
 
     @Override
@@ -123,13 +227,28 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
         updataParam(sortDetailItemBean.getData().getAttribute());
     }
 
-    //商品参数
+    //商品参数attribute 集合的长度根据不同id有4，→有5  有6 避免下标越界attribute.size取4
     private void updataParam(List<SortDetailItemBean.DataBeanX.AttributeBean> attribute) {
+        if (attribute.size() > 0) {
+            tvCaizhi.setText(attribute.get(0).getName());
+            txtCaizhi.setText(attribute.get(0).getValue());
 
+            tvSize.setText(attribute.get(1).getName());
+            txtSize.setText(attribute.get(1).getValue());
 
-        if (attribute != null) {
+            tvColor.setText(attribute.get(2).getName());
+            txtColor.setText(attribute.get(2).getValue());
 
+            tvStanderd.setText(attribute.get(3).getName());
+            txtStanderd.setText(attribute.get(3).getValue());
+
+            /*tvAdds.setText(attribute.get(4).getName());
+            txtAdds.setText(attribute.get(4).getValue());
+
+            tvRemark.setText(attribute.get(5).getName());
+            txtRemark.setText(attribute.get(5).getValue());*/
         }
+
     }
 
     //对WebViews进行渲染数据

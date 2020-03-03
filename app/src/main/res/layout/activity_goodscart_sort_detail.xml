@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/con_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.sort.activity.cart.GoodsSortDetailActivity">
@@ -164,7 +165,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_meterial"
+                    android:id="@+id/con_caizhi"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
@@ -172,60 +173,7 @@
                     app:layout_constraintTop_toBottomOf="@id/txt_param">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="尺寸"
-                        android:textSize="16sp"
-                        app:layout_constraintLeft_toLeftOf="parent" />
-
-                    <TextView
-                        android:id="@+id/txt_size"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="尺寸"
-                        android:textSize="24sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/colorGray"
-                    app:layout_constraintTop_toBottomOf="@id/con_meterial">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="颜色"
-                        android:textSize="16sp"
-                        app:layout_constraintLeft_toLeftOf="parent" />
-
-                    <TextView
-                        android:id="@+id/txt_color"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="颜色"
-                        android:textSize="24sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_caizhi"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/colorGray"
-                    app:layout_constraintTop_toBottomOf="@id/con_color">
-
-                    <TextView
+                        android:id="@+id/tv_caizhi"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -239,13 +187,14 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="材质"
-                        android:textSize="24sp"
+                        android:textSize="8dp"
+                        android:maxLines="1"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/con_standerd"
+                    android:id="@+id/con_meterial"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="15dp"
@@ -253,6 +202,67 @@
                     app:layout_constraintTop_toBottomOf="@id/con_caizhi">
 
                     <TextView
+                        android:id="@+id/tv_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="尺寸"
+                        android:textSize="16sp"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txt_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="尺寸"
+                        android:textSize="8dp"
+                        android:maxLines="1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorGray"
+                    app:layout_constraintTop_toBottomOf="@id/con_meterial">
+
+                    <TextView
+                        android:id="@+id/tv_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="颜色"
+                        android:textSize="16sp"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txt_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="颜色"
+                        android:textSize="8dp"
+                        android:maxLines="1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_standerd"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorGray"
+                    app:layout_constraintTop_toBottomOf="@id/con_color">
+
+                    <TextView
+                        android:id="@+id/tv_standerd"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -266,7 +276,37 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="执行标准"
-                        android:textSize="24sp"
+                        android:textSize="8dp"
+                        android:maxLines="1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--<androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/con_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorGray"
+                    app:layout_constraintTop_toBottomOf="@id/con_adds">
+
+                    <TextView
+                        android:id="@+id/tv_remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="备注"
+                        android:textSize="16sp"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txt_remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="备注"
+                        android:textSize="8dp"
+                        android:maxLines="1"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -280,6 +320,7 @@
                     app:layout_constraintTop_toBottomOf="@id/con_standerd">
 
                     <TextView
+                        android:id="@+id/tv_adds"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -293,10 +334,11 @@
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:text="产地"
-                        android:textSize="24sp"
+                        android:textSize="8dp"
+                        android:maxLines="1"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>-->
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <WebView

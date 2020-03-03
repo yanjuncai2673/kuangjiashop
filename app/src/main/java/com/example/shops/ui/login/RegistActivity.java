@@ -42,7 +42,7 @@ public class RegistActivity extends BaseActivity<RegistConstract.Presenter> impl
 
     @Override
     protected void initData() {
-
+        persenter.getRegistData();
     }
 
     @Override
@@ -62,6 +62,10 @@ public class RegistActivity extends BaseActivity<RegistConstract.Presenter> impl
 
     @Override
     public void getRegistReturn(RegistBean registBean) {
+updataRegist(registBean);
+    }
+
+    private void updataRegist(RegistBean registBean) {
 
     }
 

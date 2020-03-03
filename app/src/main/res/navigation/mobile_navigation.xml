@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_sort" />
     <fragment
         android:id="@+id/navigation_shopping"
-        android:name="com.example.shops.ui.goShopping.GoShopping"
+        android:name="com.example.shops.ui.goShopping.GoShoppingFragment"
         android:label="@string/title_shopping"
         tools:layout="@layout/fragment_shopping" />
     <fragment

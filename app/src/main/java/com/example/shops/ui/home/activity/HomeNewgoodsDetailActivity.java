@@ -83,7 +83,7 @@ public class HomeNewgoodsDetailActivity extends BaseActivity<HomeNewgoodsDetailC
         for (int i = 0; i <list.size() ; i++) {
             if (id == list.get(i).getId()) {
                 tvHdName.setText(list.get(i).getName());
-                tvHdPrice.setText(list.get(i).getRetail_price()+"");
+                tvHdPrice.setText(list.get(i).getRetail_price()+"元");
             }
         }
 

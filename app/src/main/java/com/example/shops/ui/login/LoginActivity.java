@@ -2,11 +2,13 @@ package com.example.shops.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.shops.R;
@@ -63,33 +65,48 @@ public class LoginActivity extends BaseActivity<LoginConstract.Presenter> implem
     @Override
     public void getLoginReturn(UserLoginBean userLoginBean) {
         //登录成功将token存入sp
-        SpUtils.getInstance().setValue("token",userLoginBean.getData().getToken());
-
+        SpUtils.getInstance().setValue("token", userLoginBean.getData().getToken());
+        finish();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 
     @OnClick({R.id.btn_login_regist, R.id.btn_login_lo})
     public void onViewClicked(View view) {
         String name = etLoginName.getText().toString();
         String pwd = etLoginPwd.getText().toString();
-        persenter.getLoginData(name,pwd);
+
         switch (view.getId()) {
             case R.id.btn_login_regist:
                 regist();
                 break;
             case R.id.btn_login_lo:
+                if (!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(pwd)) {
+                    showMes("登录成功");
+                    persenter.getLoginData(name, pwd);
+                }else {
+                    showMes("账号或密码不能为空");
+                }
                 break;
         }
     }
 
     private void regist() {
         Intent intent = new Intent(this, RegistActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,210);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 210&&resultCode==220) {
+            if(data!=null) {
+                String name = data.getStringExtra("name");
+                String pwd = data.getStringExtra("pwd");
+                String repwd = data.getStringExtra("repwd");
+                etLoginName.setText(name);
+                etLoginPwd.setText(pwd);
+            }
+        }
     }
 }

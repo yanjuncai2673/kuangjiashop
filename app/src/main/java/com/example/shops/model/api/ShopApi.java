@@ -5,7 +5,11 @@ import com.example.shops.model.bean.home.BrandGoodsBean;
 import com.example.shops.model.bean.home.HomeBrandMadeBean;
 import com.example.shops.model.bean.home.HomeIndexBean;
 import com.example.shops.model.bean.home.HomeNewGoodsDetailBean;
+import com.example.shops.model.bean.login.RegistBean;
 import com.example.shops.model.bean.login.UserLoginBean;
+import com.example.shops.model.bean.shopping.CartGoodsCheckedBean;
+import com.example.shops.model.bean.shopping.GoShoppingBean;
+import com.example.shops.model.bean.shopping.UpdateCartGoodsBean;
 import com.example.shops.model.bean.sort.SortDataBean;
 import com.example.shops.model.bean.sort.SortDetailDataBean;
 import com.example.shops.model.bean.sort.SortDetailTabBean;
@@ -14,6 +18,7 @@ import com.example.shops.model.bean.sort.cart.SortDetailItemBean;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -57,5 +62,24 @@ public interface ShopApi {
 
     //登录接口
     @POST("auth/login")
+    @FormUrlEncoded
     Flowable<UserLoginBean>getLogin(@Field("nickname")String nickname,@Field("password")String password);
+
+    //注册验证码接口
+    @GET("auth/verify")
+    Flowable<RegistBean> getRegistVerify();
+
+    //获取购物车界面数据接口
+    @GET("cart/index")
+    Flowable<GoShoppingBean>getGoShopping();
+
+    //获取购物车商品是否是选中状态的接口
+    @POST("cart/checked")
+    @FormUrlEncoded//post方式需要form表单url
+    Flowable<CartGoodsCheckedBean>getCartGoodsChecked(@Field("productIds")String pids,@Field("isChecked")int isChecked);
+
+    //获取购物车更新数据接口
+    @POST("cart/update")
+    @FormUrlEncoded
+    Flowable<UpdateCartGoodsBean>updateCartGoods(@Field("productId")String productId,@Field("goodsId")String goodsId,@Field("number")int number,@Field("id")int id);
 }

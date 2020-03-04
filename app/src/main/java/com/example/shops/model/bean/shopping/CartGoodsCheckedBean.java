@@ -1,13 +1,12 @@
-package com.example.shops.model.bean;
+package com.example.shops.model.bean.shopping;
 
 import java.util.List;
 
-public class GoShoppingBean {
-
+public class CartGoodsCheckedBean {
     /**
      * errno : 0
      * errmsg :
-     * data : {"cartList":[{"id":104,"user_id":5,"session_id":"1","goods_id":1147048,"goods_sn":"1147048","product_id":228,"goods_name":"简约知性系列居家地毯 蓝灰格","market_price":559,"retail_price":559,"number":9,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":0,"list_pic_url":"http://yanxuan.nosdn.127.net/fd7920a2eadd10fa10c0c03959a2abe0.png"},{"id":108,"user_id":5,"session_id":"1","goods_id":1125017,"goods_sn":"1125017","product_id":175,"goods_name":"天鹅船创意摆件","market_price":99,"retail_price":99,"number":3,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/ae63fed274187e3e572043c53fefd836.png"},{"id":109,"user_id":5,"session_id":"1","goods_id":1086015,"goods_sn":"1086015","product_id":103,"goods_name":"北欧极简直杆台灯","market_price":249,"retail_price":249,"number":1,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":0,"list_pic_url":"http://yanxuan.nosdn.127.net/d5c2ecfe0fb00cdd8b829975bab21a31.png"}],"cartTotal":{"goodsCount":13,"goodsAmount":5577,"checkedGoodsCount":3,"checkedGoodsAmount":297}}
+     * data : {"cartList":[{"id":111,"user_id":5,"session_id":"1","goods_id":1135058,"goods_sn":"1135058","product_id":213,"goods_name":"日式多功能手卷午睡枕坐垫","market_price":79,"retail_price":79,"number":5,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/37bc0fa3524a904ac740340fa92bd515.png"},{"id":113,"user_id":5,"session_id":"1","goods_id":1116033,"goods_sn":"1116033","product_id":171,"goods_name":"多功能人体工学转椅","market_price":1399,"retail_price":1399,"number":3,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/f1dbf1d9967c478ee6def81ed40734a2.png"}],"cartTotal":{"goodsCount":8,"goodsAmount":4592,"checkedGoodsCount":8,"checkedGoodsAmount":4592}}
      */
 
     private int errno;
@@ -40,8 +39,8 @@ public class GoShoppingBean {
 
     public static class DataBean {
         /**
-         * cartList : [{"id":104,"user_id":5,"session_id":"1","goods_id":1147048,"goods_sn":"1147048","product_id":228,"goods_name":"简约知性系列居家地毯 蓝灰格","market_price":559,"retail_price":559,"number":9,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":0,"list_pic_url":"http://yanxuan.nosdn.127.net/fd7920a2eadd10fa10c0c03959a2abe0.png"},{"id":108,"user_id":5,"session_id":"1","goods_id":1125017,"goods_sn":"1125017","product_id":175,"goods_name":"天鹅船创意摆件","market_price":99,"retail_price":99,"number":3,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/ae63fed274187e3e572043c53fefd836.png"},{"id":109,"user_id":5,"session_id":"1","goods_id":1086015,"goods_sn":"1086015","product_id":103,"goods_name":"北欧极简直杆台灯","market_price":249,"retail_price":249,"number":1,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":0,"list_pic_url":"http://yanxuan.nosdn.127.net/d5c2ecfe0fb00cdd8b829975bab21a31.png"}]
-         * cartTotal : {"goodsCount":13,"goodsAmount":5577,"checkedGoodsCount":3,"checkedGoodsAmount":297}
+         * cartList : [{"id":111,"user_id":5,"session_id":"1","goods_id":1135058,"goods_sn":"1135058","product_id":213,"goods_name":"日式多功能手卷午睡枕坐垫","market_price":79,"retail_price":79,"number":5,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/37bc0fa3524a904ac740340fa92bd515.png"},{"id":113,"user_id":5,"session_id":"1","goods_id":1116033,"goods_sn":"1116033","product_id":171,"goods_name":"多功能人体工学转椅","market_price":1399,"retail_price":1399,"number":3,"goods_specifition_name_value":"","goods_specifition_ids":"","checked":1,"list_pic_url":"http://yanxuan.nosdn.127.net/f1dbf1d9967c478ee6def81ed40734a2.png"}]
+         * cartTotal : {"goodsCount":8,"goodsAmount":4592,"checkedGoodsCount":8,"checkedGoodsAmount":4592}
          */
 
         private CartTotalBean cartTotal;
@@ -65,10 +64,10 @@ public class GoShoppingBean {
 
         public static class CartTotalBean {
             /**
-             * goodsCount : 13
-             * goodsAmount : 5577
-             * checkedGoodsCount : 3
-             * checkedGoodsAmount : 297
+             * goodsCount : 8
+             * goodsAmount : 4592
+             * checkedGoodsCount : 8
+             * checkedGoodsAmount : 4592
              */
 
             private int goodsCount;
@@ -111,20 +110,20 @@ public class GoShoppingBean {
 
         public static class CartListBean {
             /**
-             * id : 104
+             * id : 111
              * user_id : 5
              * session_id : 1
-             * goods_id : 1147048
-             * goods_sn : 1147048
-             * product_id : 228
-             * goods_name : 简约知性系列居家地毯 蓝灰格
-             * market_price : 559
-             * retail_price : 559
-             * number : 9
+             * goods_id : 1135058
+             * goods_sn : 1135058
+             * product_id : 213
+             * goods_name : 日式多功能手卷午睡枕坐垫
+             * market_price : 79
+             * retail_price : 79
+             * number : 5
              * goods_specifition_name_value :
              * goods_specifition_ids :
-             * checked : 0
-             * list_pic_url : http://yanxuan.nosdn.127.net/fd7920a2eadd10fa10c0c03959a2abe0.png
+             * checked : 1
+             * list_pic_url : http://yanxuan.nosdn.127.net/37bc0fa3524a904ac740340fa92bd515.png
              */
 
             private int id;

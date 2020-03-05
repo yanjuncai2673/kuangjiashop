@@ -6,6 +6,7 @@ import com.example.shops.common.CommonSubscriber;
 import com.example.shops.interfaces.goShopping.ShoppingConstract;
 import com.example.shops.model.HttpManager;
 import com.example.shops.model.bean.shopping.CartGoodsCheckedBean;
+import com.example.shops.model.bean.shopping.DeleteCartGoodsBean;
 import com.example.shops.model.bean.shopping.GoShoppingBean;
 import com.example.shops.model.bean.shopping.UpdateCartGoodsBean;
 import com.example.shops.utils.RxUtils;
@@ -44,6 +45,18 @@ public class GoshoppingPresenter extends BasePersenter<ShoppingConstract.View>im
                     @Override
                     public void onNext(UpdateCartGoodsBean updateCartGoodsBean) {
                         mView.updateCartGoodsReturn(updateCartGoodsBean);
+                    }
+                }));
+    }
+
+    @Override
+    public void deleteCartGoods(String productIds) {
+        addSubScribe(HttpManager.getInstance().getShopApi().deleteCartGoods(productIds)
+                .compose(RxUtils.<DeleteCartGoodsBean>rxScheduler())
+                .subscribeWith(new CommonSubscriber<DeleteCartGoodsBean>(mView) {
+                    @Override
+                    public void onNext(DeleteCartGoodsBean deleteCartGoodsBean) {
+                        mView.deleteCartGoodsReturn(deleteCartGoodsBean);
                     }
                 }));
     }

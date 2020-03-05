@@ -64,8 +64,15 @@ public class LoginActivity extends BaseActivity<LoginConstract.Presenter> implem
 
     @Override
     public void getLoginReturn(UserLoginBean userLoginBean) {
-        //登录成功将token存入sp
-        SpUtils.getInstance().setValue("token", userLoginBean.getData().getToken());
+       if(userLoginBean.getData().getCode()==200){
+         showMes("登录成功");
+           //登录成功将token存入sp
+           SpUtils.getInstance().setValue("token", userLoginBean.getData().getToken());
+
+       }else {
+           showMes("账号重复重新登录");
+       }
+
         finish();
     }
 
@@ -82,7 +89,7 @@ public class LoginActivity extends BaseActivity<LoginConstract.Presenter> implem
                 break;
             case R.id.btn_login_lo:
                 if (!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(pwd)) {
-                    showMes("登录成功");
+
                     persenter.getLoginData(name, pwd);
                 }else {
                     showMes("账号或密码不能为空");

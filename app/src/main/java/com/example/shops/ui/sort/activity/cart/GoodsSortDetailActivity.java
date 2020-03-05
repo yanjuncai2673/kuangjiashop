@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shops.R;
 import com.example.shops.base.BaseActivity;
 import com.example.shops.interfaces.sort.cart.CartConstart;
+import com.example.shops.model.bean.sort.cart.JobGoShoppingBean;
 import com.example.shops.model.bean.sort.cart.SortDetailItemBean;
 import com.example.shops.persenter.sort.cart.CartPersenter;
 import com.youth.banner.Banner;
@@ -225,6 +226,11 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
 
         //规格数据
         updataParam(sortDetailItemBean.getData().getAttribute());
+    }
+
+    @Override
+    public void getJobGoShoppingReturn(JobGoShoppingBean jobGoShoppingBean) {
+
     }
 
     //商品参数attribute 集合的长度根据不同id有4，→有5  有6 避免下标越界attribute.size取4

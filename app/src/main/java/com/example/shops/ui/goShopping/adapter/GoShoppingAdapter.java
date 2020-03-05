@@ -70,7 +70,7 @@ public class GoShoppingAdapter extends BaseAdapter {
         if (!isEdit) {//正常状态下显示的item
             ck_select.setChecked(cartlist.isSelect);
             namede.setText(cartlist.getGoods_name());
-            pricede.setText("¥ "+cartlist.getList_pic_url());
+            pricede.setText("¥ "+cartlist.getRetail_price());
             numde.setText(String.valueOf(cartlist.getNumber()));
         }else {//编辑状态下显示item
             ck_select.setChecked(false);

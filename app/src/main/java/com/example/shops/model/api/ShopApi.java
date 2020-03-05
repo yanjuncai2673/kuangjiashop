@@ -8,12 +8,14 @@ import com.example.shops.model.bean.home.HomeNewGoodsDetailBean;
 import com.example.shops.model.bean.login.RegistBean;
 import com.example.shops.model.bean.login.UserLoginBean;
 import com.example.shops.model.bean.shopping.CartGoodsCheckedBean;
+import com.example.shops.model.bean.shopping.DeleteCartGoodsBean;
 import com.example.shops.model.bean.shopping.GoShoppingBean;
 import com.example.shops.model.bean.shopping.UpdateCartGoodsBean;
 import com.example.shops.model.bean.sort.SortDataBean;
 import com.example.shops.model.bean.sort.SortDetailDataBean;
 import com.example.shops.model.bean.sort.SortDetailTabBean;
 import com.example.shops.model.bean.sort.SortGoodsListBean;
+import com.example.shops.model.bean.sort.cart.JobGoShoppingBean;
 import com.example.shops.model.bean.sort.cart.SortDetailItemBean;
 
 import io.reactivex.Flowable;
@@ -82,4 +84,14 @@ public interface ShopApi {
     @POST("cart/update")
     @FormUrlEncoded
     Flowable<UpdateCartGoodsBean>updateCartGoods(@Field("productId")String productId,@Field("goodsId")String goodsId,@Field("number")int number,@Field("id")int id);
+
+    //获取购物车删除数据接口
+    @POST("cart/delete")
+    @FormUrlEncoded
+    Flowable<DeleteCartGoodsBean> deleteCartGoods(@Field("productIds")String productIds);
+
+    //加入到购物车接口
+    @POST("cart/add")
+    @FormUrlEncoded
+    Flowable<JobGoShoppingBean>getJobGoShopping(@Field("goodsId")int goodsId,@Field("number")int number,@Field("productId")int productId);
 }

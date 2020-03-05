@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.shops.common.Constant;
 import com.example.shops.model.api.ShopApi;
+import com.example.shops.utils.SpUtils;
 import com.example.shops.utils.SystemUtils;
 
 import java.io.File;
@@ -105,6 +106,8 @@ public class HttpManager {
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request().newBuilder()
                     .addHeader("Connection","keep-alive")
+                    .addHeader("Client-Type","ANDROID")//添加头拦截器拦截登录token
+                    .addHeader("X-Nideshop-Token", SpUtils.getInstance().getString("token"))
                     .build();
             return chain.proceed(request);
         }

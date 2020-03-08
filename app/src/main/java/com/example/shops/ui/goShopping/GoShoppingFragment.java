@@ -270,6 +270,14 @@ public class GoShoppingFragment extends BaseFragment<ShoppingConstract.Presenter
 
     //下单购买
     private void goBuy() {
+        for (GoShoppingBean.DataBean.CartListBean item:cartListBeans) {
+            if (item.isSelect) {
+                Intent intent = new Intent(getActivity(), BuyGoodsActivity.class);
+                startActivity(intent);
+            }else {
+                showMes("请选择下单的商品");
+            }
+        }
     }
 
     //编辑界面 删除条目

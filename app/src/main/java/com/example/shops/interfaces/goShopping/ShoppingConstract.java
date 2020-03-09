@@ -2,12 +2,16 @@ package com.example.shops.interfaces.goShopping;
 
 import com.example.shops.interfaces.IBasePersenter;
 import com.example.shops.interfaces.IBaseView;
+import com.example.shops.model.bean.shopping.AddressEditorBean;
 import com.example.shops.model.bean.shopping.BuyGoodsBean;
 import com.example.shops.model.bean.shopping.CartGoodsCheckedBean;
 import com.example.shops.model.bean.shopping.DeleteCartGoodsBean;
+import com.example.shops.model.bean.shopping.DetailAddsBean;
 import com.example.shops.model.bean.shopping.GoShoppingBean;
 import com.example.shops.model.bean.shopping.ShoppingAddsBean;
 import com.example.shops.model.bean.shopping.UpdateCartGoodsBean;
+
+import java.util.Map;
 
 public interface ShoppingConstract {
 
@@ -49,11 +53,28 @@ public interface ShoppingConstract {
     }
 
     //商品地址创建接口
-    interface ShoppingAddsView extends IBaseView{
+    interface ShoppingAddsView extends IBaseView {
         void getShoppingAddsReturn(ShoppingAddsBean shoppingAddsBean);
     }
-    interface ShoppingAddsPresenter extends IBasePersenter<ShoppingAddsView>{
+
+    interface ShoppingAddsPresenter extends IBasePersenter<ShoppingAddsView> {
         void getShoppingAddsData();
+    }
+
+    //新建地址接口
+    interface AddressEditorView extends IBaseView {///创建地址保存
+
+        void getAddressEditorReturn(AddressEditorBean addressEditorBean);
+
+        //获取详细地址省市县接口
+        void getDetailAddsReturn(DetailAddsBean detailAddsBean);
+    }
+
+    interface AddressEditorPresenter extends IBasePersenter<AddressEditorView> {
+        void getAddressEditorData(Map map);
+
+        //详细地址省市县
+        void getDetailAddsData(int parentId);
     }
 
 }

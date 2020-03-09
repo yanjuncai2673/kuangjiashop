@@ -131,7 +131,7 @@ public class BuyGoodsActivity extends BaseActivity<ShoppingConstract.BuyGoodsPre
             case R.id.tv_buy_noadds:
                 break;
             case R.id.con_adds://添加收获地址
-                createAdds();
+               addAddress();
                 break;
             case R.id.con_coupon:
                 break;
@@ -140,14 +140,10 @@ public class BuyGoodsActivity extends BaseActivity<ShoppingConstract.BuyGoodsPre
         }
     }
 
-    private void createAdds() {
+    private void addAddress() {
         Intent intent = new Intent(this,ShoppingAddsActivity.class);
+        startActivity(intent);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

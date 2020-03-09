@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.goShopping.ShoppingAddsActivity"></activity>
+        <activity android:name=".ui.goShopping.activity.AddressEditorActivity"></activity>
+        <activity android:name=".ui.goShopping.ShoppingAddsActivity" />
         <activity android:name=".ui.sort.activity.cart.GoodsSortDetailActivity" />
         <activity android:name=".ui.sort.activity.SortDetailActivity" />
         <activity android:name=".ui.home.activity.HomeBrandMadeActivity" />

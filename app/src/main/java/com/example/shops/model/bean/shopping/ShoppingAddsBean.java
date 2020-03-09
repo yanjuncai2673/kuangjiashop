@@ -1,5 +1,6 @@
 package com.example.shops.model.bean.shopping;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ShoppingAddsBean {
@@ -37,7 +38,7 @@ public class ShoppingAddsBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         /**
          * id : 12
          * name : 张三

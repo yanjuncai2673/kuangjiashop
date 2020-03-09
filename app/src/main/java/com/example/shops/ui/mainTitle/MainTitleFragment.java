@@ -1,38 +1,54 @@
 package com.example.shops.ui.mainTitle;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shops.R;
 import com.example.shops.base.BaseFragment;
-import com.example.shops.interfaces.IBasePersenter;
+import com.example.shops.interfaces.maintitle.MainTitleConstract;
+import com.example.shops.model.bean.maintitle.MainTitleBean;
+import com.example.shops.persenter.maintitle.MaintitlePresenter;
 
-public class MainTitleFragment extends Fragment {
-    private MainTitleViewModel mainTitleViewModel;
+import java.util.ArrayList;
+import java.util.List;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        mainTitleViewModel =
-                ViewModelProviders.of(this).get(MainTitleViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_maintitle, container, false);
-        final TextView textView = root.findViewById(R.id.text_mainTitle);
-        mainTitleViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+import butterknife.BindView;
+
+public class MainTitleFragment extends BaseFragment<MainTitleConstract.Presenter> implements MainTitleConstract.View {
+
+
+    @BindView(R.id.rv_maintitle)
+    RecyclerView rvMaintitle;
+    List<MainTitleBean.DataBeanX.DataBean> dataBeans;
+    MainTitleAdapter titleAdapter;
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_maintitle;
     }
 
+    @Override
+    protected void initData() {
+        persenter.getMainTitleData(1, 20);
+    }
 
+    @Override
+    protected void initView() {
+        rvMaintitle.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        dataBeans = new ArrayList<>();
+        titleAdapter = new MainTitleAdapter(dataBeans, getActivity());
+        rvMaintitle.setAdapter(titleAdapter);
+    }
+
+    @Override
+    protected MainTitleConstract.Presenter createPersenter() {
+        return new MaintitlePresenter();
+    }
+
+    @Override
+    public void getMainTitleDataReturn(MainTitleBean mainTitleBean) {
+
+        titleAdapter.updata(mainTitleBean.getData().getData());
+    }
 }

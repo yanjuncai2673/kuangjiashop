@@ -7,9 +7,12 @@ import com.example.shops.model.bean.home.HomeIndexBean;
 import com.example.shops.model.bean.home.HomeNewGoodsDetailBean;
 import com.example.shops.model.bean.login.RegistBean;
 import com.example.shops.model.bean.login.UserLoginBean;
+import com.example.shops.model.bean.maintitle.MainTitleBean;
+import com.example.shops.model.bean.shopping.AddressEditorBean;
 import com.example.shops.model.bean.shopping.BuyGoodsBean;
 import com.example.shops.model.bean.shopping.CartGoodsCheckedBean;
 import com.example.shops.model.bean.shopping.DeleteCartGoodsBean;
+import com.example.shops.model.bean.shopping.DetailAddsBean;
 import com.example.shops.model.bean.shopping.GoShoppingBean;
 import com.example.shops.model.bean.shopping.ShoppingAddsBean;
 import com.example.shops.model.bean.shopping.UpdateCartGoodsBean;
@@ -20,8 +23,11 @@ import com.example.shops.model.bean.sort.SortGoodsListBean;
 import com.example.shops.model.bean.sort.cart.JobGoShoppingBean;
 import com.example.shops.model.bean.sort.cart.SortDetailItemBean;
 
+import java.util.Map;
+
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -104,4 +110,17 @@ public interface ShopApi {
     //商品地址接口
     @GET("address/list")
     Flowable<ShoppingAddsBean>getShoppingAdds();
+
+    //专题界面数据
+    @GET("topic/list")
+    Flowable<MainTitleBean>getMainTitleData(@Query("page")int page,@Query("size")int size);
+
+    //新建地址接口
+    @POST("address/save")
+    @FormUrlEncoded
+    Flowable<AddressEditorBean>saveAddress(@FieldMap Map addressMap);
+
+    //详细地址Api
+    @GET("region/list")
+    Flowable<DetailAddsBean>getDetailAdds(@Query("parentId")int parentId);
 }

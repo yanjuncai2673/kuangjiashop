@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.goShopping.ShoppingAddsActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_shop_adds"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/tv_new_create"
+        android:text="新建"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:textColor="@color/col_white"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

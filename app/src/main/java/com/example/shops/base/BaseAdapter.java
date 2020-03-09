@@ -17,6 +17,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
 
     protected List<T> mDatas;
     protected Context mContext;
+    private boolean isclick;
 
     public BaseAdapter(List<T> data, Context context){
         mDatas = data;
@@ -31,7 +32,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (itemClickHandler != null){
+                if (itemClickHandler != null&&isclick){
                     itemClickHandler.itemClick(holder.getLayoutPosition(),holder);
                 }
             }

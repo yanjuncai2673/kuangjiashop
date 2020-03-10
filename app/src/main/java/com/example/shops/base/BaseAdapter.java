@@ -14,10 +14,10 @@ import java.util.List;
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
 
     protected  ItemClickHandler itemClickHandler;
+    protected  View.OnClickListener clickListener;
 
     protected List<T> mDatas;
     protected Context mContext;
-    private boolean isclick;
 
     public BaseAdapter(List<T> data, Context context){
         mDatas = data;
@@ -32,7 +32,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (itemClickHandler != null&&isclick){
+                if (itemClickHandler != null){
                     itemClickHandler.itemClick(holder.getLayoutPosition(),holder);
                 }
             }

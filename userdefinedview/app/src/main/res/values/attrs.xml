@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="myview">
+        <attr name="text" format="string"/>
+        <attr name="textSize" format="integer"/>
+        <attr name="textColor" format="string"/>
+    </declare-styleable>
+</resources>
+    <!--声明 风格-->
+<!--属性 及 样式类型-->

@@ -71,7 +71,7 @@ public interface ShoppingConstract {
     }
 
     interface AddressEditorPresenter extends IBasePersenter<AddressEditorView> {
-        void getAddressEditorData(Map map);
+        void getAddressEditorData(Map<String,String> map);
 
         //详细地址省市县
         void getDetailAddsData(int parentId);

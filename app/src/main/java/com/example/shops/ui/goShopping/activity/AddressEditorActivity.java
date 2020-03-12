@@ -1,8 +1,10 @@
 package com.example.shops.ui.goShopping.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +45,7 @@ public class AddressEditorActivity extends BaseActivity<ShoppingConstract.Addres
     @BindView(R.id.tv_phone)
     EditText tvPhone;
     @BindView(R.id.tv_address)
-    EditText tvAddress;
+    TextView tvAddress;
     @BindView(R.id.tv_descadds)
     EditText tvDescadds;
     @BindView(R.id.ck_default)
@@ -65,6 +67,11 @@ public class AddressEditorActivity extends BaseActivity<ShoppingConstract.Addres
     private AddressSelectAdapter addressSelectAdapter;
 
     ShoppingAddsBean.DataBean addsbean;
+    private String name;
+    private String phone;
+    private String addrs;
+    private String descadds;
+    private String defalt;
 
     @Override
     protected void initData() {
@@ -99,6 +106,14 @@ public class AddressEditorActivity extends BaseActivity<ShoppingConstract.Addres
     ////获取地址编辑页面返回
     @Override
     public void getAddressEditorReturn(AddressEditorBean addressEditorBean) {
+        Intent intent = new Intent();
+        intent.putExtra("name", name);
+        intent.putExtra("phone", phone);
+        intent.putExtra("addrs", addrs);
+        intent.putExtra("descadds", descadds);
+        intent.putExtra("defalt", defalt);
+        setResult(230, intent);
+
         finish();
     }
 
@@ -243,18 +258,29 @@ public class AddressEditorActivity extends BaseActivity<ShoppingConstract.Addres
 
     private void saveAddress() {
         Map<String, String> map = new HashMap<>();
+        name = tvName.getText().toString();
+        phone = tvPhone.getText().toString();
+        String pro = String.valueOf(pid);
+        String cd = String.valueOf(cid);
+        String ad = String.valueOf(aid);
+        addrs = tvAddress.getText().toString();
+        descadds = tvDescadds.getText().toString();
+        if (TextUtils.isEmpty(name) && TextUtils.isEmpty(phone) && TextUtils.isEmpty(addrs) &&
+                TextUtils.isEmpty(descadds)) {
+            showMes("收获信息不完整，请补充");
+        }
         if (addsbean == null) {
             map.put("id", "0");
         } else {
             map.put("id", String.valueOf(addsbean.getId()));
         }
-        map.put("name", tvName.getText().toString());
-        map.put("mobile", tvPhone.getText().toString());
-        map.put("province_id", String.valueOf(pid));
-        map.put("city_id", String.valueOf(cid));
-        map.put("district_id", String.valueOf(aid));
-        map.put("address", tvAddress.getText().toString());
-        String defalt = ckDefault.isChecked() ? "0" : "1";
+        map.put("name", name);
+        map.put("mobile", phone);
+        map.put("province_id", pro);
+        map.put("city_id", cd);
+        map.put("district_id", ad);
+        map.put("address", descadds);
+        defalt = ckDefault.isChecked() ? "0" : "1";
         map.put("is_default", defalt);
         persenter.getAddressEditorData(map);
     }

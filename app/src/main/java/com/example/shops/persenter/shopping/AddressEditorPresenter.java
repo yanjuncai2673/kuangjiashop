@@ -13,7 +13,7 @@ import java.util.Map;
 public class AddressEditorPresenter extends BasePersenter<ShoppingConstract.AddressEditorView>implements ShoppingConstract.AddressEditorPresenter {
 
     @Override
-    public void getAddressEditorData(Map map) {
+    public void getAddressEditorData(Map<String,String> map) {
         addSubScribe(HttpManager.getInstance().getShopApi().saveAddress(map)
         .compose(RxUtils.<AddressEditorBean>rxScheduler())
         .subscribeWith(new CommonSubscriber<AddressEditorBean>(mView) {

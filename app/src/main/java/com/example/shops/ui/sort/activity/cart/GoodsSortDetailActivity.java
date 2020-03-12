@@ -1,7 +1,9 @@
 package com.example.shops.ui.sort.activity.cart;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,8 @@ import com.example.shops.interfaces.sort.cart.CartConstart;
 import com.example.shops.model.bean.sort.cart.JobGoShoppingBean;
 import com.example.shops.model.bean.sort.cart.SortDetailItemBean;
 import com.example.shops.persenter.sort.cart.CartPersenter;
+import com.example.shops.ui.login.LoginActivity;
+import com.example.shops.utils.SpUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 
@@ -108,12 +112,15 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
     @BindView(R.id.tv_adds)
     TextView tvAdds;*/
     private ArrayList<SortDetailItemBean.DataBeanX.GalleryBean> banners;
+
     private PopupWindow popupWindow;
     int amount = 0;
+    private int sortDetailId;
+    private int prodectId;
 
     @Override
     protected void initData() {
-        int sortDetailId = getIntent().getIntExtra("sortDetailId", 0);
+        sortDetailId = getIntent().getIntExtra("sortDetailId", 0);
         persenter.getSortDetailItemData(sortDetailId);
 
     }
@@ -170,14 +177,27 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
         job.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Integer.parseInt(num.getText().toString())>0) {
-                    Toast.makeText(GoodsSortDetailActivity.this, "添加购物车成功", Toast.LENGTH_SHORT).show();
-                    popupWindow.dismiss();
-                }else {
-                    Toast.makeText(GoodsSortDetailActivity.this, "请添加数量", Toast.LENGTH_SHORT).show();
+                int math = Integer.parseInt(num.getText().toString());
+               //点击加入购物车先判断是否已登录
+                String token = SpUtils.getInstance().getString("token");
+                //先判断是否token为空
+                if (TextUtils.isEmpty(token)) {
+                    showMes("还未登录，请先登录");
+                    Intent intent = new Intent(GoodsSortDetailActivity.this, LoginActivity.class);
+                    startActivityForResult(intent, 200);
+                } else {//已经登录
+                    if (math>0) {
+                        persenter.getJobGoShopping(sortDetailId,math,prodectId);
+                        Toast.makeText(GoodsSortDetailActivity.this, "添加购物车成功", Toast.LENGTH_SHORT).show();
+                        popupWindow.dismiss();
+                    }else {
+                        Toast.makeText(GoodsSortDetailActivity.this, "请添加数量", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
+
+
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,6 +233,8 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
 
     @Override
     public void getSortDetailItemDataReturn(SortDetailItemBean sortDetailItemBean) {
+        prodectId = sortDetailItemBean.getData().getProductList().get(0).getId();
+
 //更新banner数据
         updataBanner(sortDetailItemBean.getData().getGallery());
 
@@ -231,6 +253,9 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
     @Override
     public void getJobGoShoppingReturn(JobGoShoppingBean jobGoShoppingBean) {
 
+    }
+
+    private void updateJobCart(List<JobGoShoppingBean.DataBean.CartListBean> cartList) {
     }
 
     //商品参数attribute 集合的长度根据不同id有4，→有5  有6 避免下标越界attribute.size取4
@@ -288,10 +313,14 @@ public class GoodsSortDetailActivity extends BaseActivity<CartConstart.Persenter
                 .start();
     }
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+        if (requestCode == 200) {
+            if (persenter != null) {
+               persenter.getSortDetailItemData(sortDetailId);
+            }
+        }
     }
 }

@@ -130,7 +130,7 @@ public interface ShopApi {
     //新建地址接口
     @POST("address/save")
     @FormUrlEncoded
-    Flowable<AddressEditorBean> saveAddress(@FieldMap Map addressMap);
+    Flowable<AddressEditorBean> saveAddress(@FieldMap Map<String,String> addressMap);
 
     //详细地址Api
     @GET("region/list")

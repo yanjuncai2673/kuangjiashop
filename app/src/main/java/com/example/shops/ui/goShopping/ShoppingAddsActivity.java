@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,7 +67,7 @@ shoppingAddsAdapter.updata(shoppingAddsBean.getData());
     @OnClick(R.id.tv_new_create)
     public void onViewClicked() {
         Intent intent = new Intent(this, AddressEditorActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,210);
     }
 
     @Override
@@ -76,5 +77,20 @@ shoppingAddsAdapter.updata(shoppingAddsBean.getData());
         Intent intent = new Intent(this, AddressEditorActivity.class);
         intent.putExtra("address",dataBean);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            if (requestCode == 210 && resultCode==230) {
+                String name = data.getStringExtra("name");
+                String phone = data.getStringExtra("phone");
+                String addrs = data.getStringExtra("addrs");
+                String descadds = data.getStringExtra("descadds");
+                String defalt = data.getStringExtra("defalt");
+
+            }
+        }
     }
 }

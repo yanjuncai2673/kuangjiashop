@@ -84,12 +84,12 @@ shoppingAddsAdapter.updata(shoppingAddsBean.getData());
         super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
             if (requestCode == 210 && resultCode==230) {
+                persenter.getShoppingAddsData();
                 String name = data.getStringExtra("name");
                 String phone = data.getStringExtra("phone");
                 String addrs = data.getStringExtra("addrs");
                 String descadds = data.getStringExtra("descadds");
                 String defalt = data.getStringExtra("defalt");
-
             }
         }
     }

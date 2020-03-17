@@ -64,18 +64,12 @@ public class LoginActivity extends BaseActivity<LoginConstract.Presenter> implem
 
     @Override
     public void getLoginReturn(UserLoginBean userLoginBean) {
-       if(userLoginBean.getData().getCode()==200){
-         showMes("登录成功");
-           //登录成功将token存入sp
-           SpUtils.getInstance().setValue("token", userLoginBean.getData().getToken());
 
-       }else {
-           showMes("账号重复重新登录");
-       }
-
+        //登录成功将token存入sp
+        SpUtils.getInstance().setValue("token", userLoginBean.getData().getToken());
+        showMes(userLoginBean.getData().getCode() + "");
         finish();
     }
-
 
 
     @OnClick({R.id.btn_login_regist, R.id.btn_login_lo})
@@ -88,10 +82,10 @@ public class LoginActivity extends BaseActivity<LoginConstract.Presenter> implem
                 regist();
                 break;
             case R.id.btn_login_lo:
-                if (!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(pwd)) {
+                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(pwd)) {
 
                     persenter.getLoginData(name, pwd);
-                }else {
+                } else {
                     showMes("账号或密码不能为空");
                 }
                 break;
@@ -100,14 +94,14 @@ public class LoginActivity extends BaseActivity<LoginConstract.Presenter> implem
 
     private void regist() {
         Intent intent = new Intent(this, RegistActivity.class);
-        startActivityForResult(intent,210);
+        startActivityForResult(intent, 210);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 210&&resultCode==220) {
-            if(data!=null) {
+        if (requestCode == 210 && resultCode == 220) {
+            if (data != null) {
                 String name = data.getStringExtra("name");
                 String pwd = data.getStringExtra("pwd");
                 String repwd = data.getStringExtra("repwd");

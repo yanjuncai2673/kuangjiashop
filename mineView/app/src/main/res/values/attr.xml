@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--自定义文本控件的属性-->
+<resources>
+    <declare-styleable name="mytextview">
+        <attr name="text" format="string"/>
+        <attr name="textColor" format="string"/>
+        <attr name="textSize" format="integer"/>
+    </declare-styleable>
+    <!--自定义图片控件的属性-->   
+    <declare-styleable name="myimageview">
+        <attr name="iv_bg_color" format="string"/>
+        <attr name="tv_txt_color" format="string"/>
+        <attr name="tv_txt_size" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="mytitleview">
+        <attr name="title_visible_share" format="boolean"/>
+        <attr name="tv_title" format="string"/>
+    </declare-styleable>
+</resources>

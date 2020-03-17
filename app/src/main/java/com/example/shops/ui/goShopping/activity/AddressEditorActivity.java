@@ -132,7 +132,7 @@ public class AddressEditorActivity extends BaseActivity<ShoppingConstract.Addres
             case R.id.tv_cannel:
                 finish();
                 break;
-            case R.id.tv_save:
+            case R.id.tv_save://点击保存
                 saveAddress();
                 break;
             case R.id.tv_address:

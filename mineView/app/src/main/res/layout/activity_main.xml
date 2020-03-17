@@ -38,4 +38,16 @@
         app:tv_title="首页"
         app:title_visible_share="true"/>
 
+    <com.example.mineview.MyCircleView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="60dp"
+        app:circle_color="#ff0000"
+        app:circle_loading_size="16"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
